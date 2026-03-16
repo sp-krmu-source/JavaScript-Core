@@ -1778,7 +1778,63 @@ sessionStorage.clear();
 
 In this example, we set and get items in both local and session storage. The username is stored persistently in local storage, while the theme is stored for the duration of the session. The `removeItem` method is used to remove specific items, and `clear` is used to clear all items from the storage.
 
+### Dark and Light theme with Local Strorage
 
+```javascript
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Theme Toggle</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 50px;
+        }
+
+        /* Light Theme */
+        .light {
+            background: white;
+            color: black;
+        }
+
+        /* Dark Theme */
+        .dark {
+            background: #222;
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Dark / Light Mode Example</h2>
+
+    <button onclick="setTheme('light')">Light</button>
+    <button onclick="setTheme('dark')">Dark</button>
+
+    <script>
+        /* Apply saved theme on page load */
+        const savedTheme = localStorage.getItem("theme");
+
+        if (savedTheme) {
+            document.body.className = savedTheme;
+        }
+
+        /* Function to change theme */
+        function setTheme(mode) {
+            document.body.className = mode;
+            localStorage.setItem("theme", mode);
+        }
+    </script>
+</body>
+</html>
+
+```
 
 
 **Difference Between Local Storage and Session Storage:**
